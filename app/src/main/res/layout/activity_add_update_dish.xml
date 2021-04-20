@@ -8,13 +8,14 @@
     android:background="@color/white"
     tools:context=".view.activites.AddUpdateDishActivity">
 
-    <Toolbar
+    <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar_add_dish_activity"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="?attr/colorPrimary"
         android:minHeight="?attr/actionBarSize"
-        android:theme="?attr/actionBarTheme"
+        app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:titleTextColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -230,9 +231,11 @@
                 android:id="@+id/btn_add_dish"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:minHeight="@dimen/_40sdp"
                 android:gravity="center"
                 android:foreground="?attr/selectableItemBackground"
                 android:text="@string/add_dish"
+                android:textSize="@dimen/_12sdp"
                 android:layout_marginStart="@dimen/_16sdp"
                 android:layout_marginTop="@dimen/_20sdp"
                 android:layout_marginEnd="@dimen/_16sdp"
