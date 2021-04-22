@@ -9,4 +9,8 @@
     <string name="type">Type</string>
     <string name="category">Category</string>
     <string name="ingredients">Ingredients</string>
+
+    <string name="select_image_action">Select Image Action</string>
+    <string name="lbl_camera">Camera</string>
+    <string name="lbl_gallery">Gallery</string>
 </resources>
