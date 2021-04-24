@@ -1,12 +1,15 @@
 package com.rrat.mvvm2demo.view.activites
 
+import android.app.Activity
 import android.app.AlertDialog
 import android.app.Dialog
 import android.content.ActivityNotFoundException
 import android.content.Intent
+import android.graphics.Bitmap
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.provider.MediaStore
 import android.provider.Settings
 import android.view.View
 import android.widget.Toast
@@ -68,15 +71,16 @@ class AddUpdateDishActivity : AppCompatActivity(), View.OnClickListener {
             Dexter.withContext(this)
                 .withPermissions(
                     android.Manifest.permission.READ_EXTERNAL_STORAGE,
-                    android.Manifest.permission.WRITE_EXTERNAL_STORAGE,
                     android.Manifest.permission.CAMERA
                 ).withListener(object : MultiplePermissionsListener{
                     override fun onPermissionsChecked(report: MultiplePermissionsReport?) {
-                        if(report!!.areAllPermissionsGranted()){
-                            Toast.makeText(this@AddUpdateDishActivity,
-                                "You have camera permission now",
-                                Toast.LENGTH_SHORT).show()
+                        report?.let {
+                            if(report!!.areAllPermissionsGranted()){
+                                val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+                                startActivityForResult(intent, CAMERA)
+                            }
                         }
+
                     }
 
                     override fun onPermissionRationaleShouldBeShown(
@@ -96,7 +100,6 @@ class AddUpdateDishActivity : AppCompatActivity(), View.OnClickListener {
             Dexter.withContext(this)
                 .withPermissions(
                     android.Manifest.permission.READ_EXTERNAL_STORAGE,
-                    android.Manifest.permission.WRITE_EXTERNAL_STORAGE
                 ).withListener(object : MultiplePermissionsListener{
                     override fun onPermissionsChecked(report: MultiplePermissionsReport?) {
                         if(report!!.areAllPermissionsGranted()){
@@ -123,6 +126,19 @@ class AddUpdateDishActivity : AppCompatActivity(), View.OnClickListener {
 
     }
 
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if(resultCode == Activity.RESULT_OK){
+            if(requestCode == CAMERA){
+                data?.let {
+                    val thumbnail: Bitmap = data.extras!!.get("data") as Bitmap
+                    binding.ivDishImage.setImageBitmap(thumbnail)
+                    binding.ivAddDishImage.setImageResource(R.drawable.ic_baseline_edit_24)
+                }
+            }
+        }
+    }
+
     private fun showRationalDialogPermissions(){
         AlertDialog.Builder(this).setMessage("It Looks like you have turned off permissions" +
                 "required for this feature. It can be enabled under Application Settings")
@@ -140,6 +156,10 @@ class AddUpdateDishActivity : AppCompatActivity(), View.OnClickListener {
             .setNegativeButton("Cancel"){
                     dialog,_-> dialog.dismiss()
             }.show()
+    }
+
+    companion object{
+        private const val CAMERA = 1
     }
 
 
