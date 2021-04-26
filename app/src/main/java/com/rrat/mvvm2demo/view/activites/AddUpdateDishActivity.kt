@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
 import android.provider.Settings
+import android.util.Log
 import android.view.View
 import android.widget.Toast
 import com.karumi.dexter.Dexter
@@ -75,7 +76,7 @@ class AddUpdateDishActivity : AppCompatActivity(), View.OnClickListener {
                 ).withListener(object : MultiplePermissionsListener{
                     override fun onPermissionsChecked(report: MultiplePermissionsReport?) {
                         report?.let {
-                            if(report!!.areAllPermissionsGranted()){
+                            if(report.areAllPermissionsGranted()){
                                 val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
                                 startActivityForResult(intent, CAMERA)
                             }
@@ -102,11 +103,13 @@ class AddUpdateDishActivity : AppCompatActivity(), View.OnClickListener {
                     android.Manifest.permission.READ_EXTERNAL_STORAGE,
                 ).withListener(object : MultiplePermissionsListener{
                     override fun onPermissionsChecked(report: MultiplePermissionsReport?) {
-                        if(report!!.areAllPermissionsGranted()){
-                            Toast.makeText(this@AddUpdateDishActivity,
-                                "You have the Gallery permission now",
-                                Toast.LENGTH_SHORT).show()
+                        report?.let {
+                            if(report.areAllPermissionsGranted()){
+                                val galleryIntent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
+                                startActivityForResult(galleryIntent, GALLERY)
+                            }
                         }
+
                     }
 
                     override fun onPermissionRationaleShouldBeShown(
@@ -136,6 +139,15 @@ class AddUpdateDishActivity : AppCompatActivity(), View.OnClickListener {
                     binding.ivAddDishImage.setImageResource(R.drawable.ic_baseline_edit_24)
                 }
             }
+            if(requestCode == GALLERY){
+                data?.let {
+                    val selectedPhotoUri = data.data
+                    binding.ivDishImage.setImageURI(selectedPhotoUri)
+                    binding.ivAddDishImage.setImageResource(R.drawable.ic_baseline_edit_24)
+                }
+            }
+        }else if(resultCode == Activity.RESULT_CANCELED){
+            Log.e("Cancelled", "User cancel image selection")
         }
     }
 
@@ -160,6 +172,7 @@ class AddUpdateDishActivity : AppCompatActivity(), View.OnClickListener {
 
     companion object{
         private const val CAMERA = 1
+        private const val GALLERY = 2
     }
 
 
