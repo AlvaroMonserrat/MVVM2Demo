@@ -138,6 +138,8 @@
                     android:layout_height="wrap_content"
                     android:textColorHint="@color/blue_gray_700"
                     android:inputType="text"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"
                     android:contentDescription="@string/image_contentDescription"
                     android:textColor="@color/gray_900"
                     android:textSize="@dimen/_15sdp" />
