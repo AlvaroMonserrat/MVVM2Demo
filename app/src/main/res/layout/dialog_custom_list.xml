@@ -17,6 +17,7 @@
         android:textStyle="bold"
         tools:text="Dialog Title"/>
 
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_list"
         android:layout_width="match_parent"

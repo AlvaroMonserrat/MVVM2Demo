@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.rrat.mvvm2demo.databinding.ItemCustomListBinding
+import com.rrat.mvvm2demo.view.activites.AddUpdateDishActivity
 
 class CustomListItemAdapter(
         private val activity: Activity,
@@ -24,7 +25,11 @@ class CustomListItemAdapter(
 
         holder.tvText.text = item
 
-
+        holder.tvText.setOnClickListener{
+            if(activity is AddUpdateDishActivity){
+                activity.selectedListItem(item, selection)
+            }
+        }
 
     }
 
@@ -36,7 +41,5 @@ class CustomListItemAdapter(
     class ViewHolder(view: ItemCustomListBinding): RecyclerView.ViewHolder(view.root){
         val tvText = view.tvText
     }
-
-
 
 }
