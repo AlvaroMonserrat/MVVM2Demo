@@ -27,6 +27,7 @@
     <string name="err_msg_select_dish_cooking_instructions">Enter dish cooking instructions.</string>
     <string name="cooking_time_in_minutes">Cooking Time in Minutes</string>
     <string name="direction_to_cook">Direction To Cook</string>
+    <string name="label_no_dishes_added_yet">No Dishes Added Yet.</string>
 
 
 </resources>
