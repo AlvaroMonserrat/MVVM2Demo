@@ -1,8 +1,10 @@
 <resources>
     <string name="app_name">MVVM2Demo</string>
-    <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
+
+    <string name="title_all_dishes">All Dishes</string>
+    <string name="title_favorite_dishes">Favorite</string>
+    <string name="title_random_dish">Random Dish</string>
+
     <string name="add_dish">Add Dish</string>
     <string name="image_contentDescription">image</string>
     <string name="title">Title</string>
@@ -27,6 +29,7 @@
     <string name="err_msg_select_dish_cooking_instructions">Enter dish cooking instructions.</string>
     <string name="cooking_time_in_minutes">Cooking Time in Minutes</string>
     <string name="direction_to_cook">Direction To Cook</string>
+    <string name="label_no_dishes_added_yet">No Dishes Added Yet.</string>
 
 
 </resources>
