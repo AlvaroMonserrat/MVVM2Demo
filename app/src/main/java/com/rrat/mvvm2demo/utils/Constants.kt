@@ -9,6 +9,21 @@ object Constants {
     const val DISH_IMAGE_SOURCE_LOCAL : String = "Local"
     const val DISH_IMAGE_SOURCE_ONLINE : String = "Online"
 
+    const val API_ENDPOINT = "recipes/random"
+
+    const val API_KEY: String = "apiKey"
+    const val LIMIT_LICENSE: String = "limitLicense"
+    const val TAGS: String = "tags"
+    const val NUMBER: String = "number"
+
+    const val BASE_URL = "https://api.spoonacular.com/"
+
+    const val API_KEY_VALUE: String = "b0f0c543f5484f229df4935ace04cdee"
+    const val LIMIT_LICENSE_VALUE: Boolean = true
+    const val TAGS_VALUE: String = "vegetarian, dessert"
+    const val NUMBER_VALUE: Int = 1
+
+
     fun dishTypes(): ArrayList<String>{
         val list = ArrayList<String>()
 

@@ -10,11 +10,13 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.rrat.mvvm2demo.R
 import com.rrat.mvvm2demo.application.FavDishApplication
 import com.rrat.mvvm2demo.databinding.FragmentAllDishesBinding
 import com.rrat.mvvm2demo.view.activites.AddUpdateDishActivity
+import com.rrat.mvvm2demo.view.activites.MainActivity
 import com.rrat.mvvm2demo.view.adapters.FavDishAdapter
 import com.rrat.mvvm2demo.viewmodel.AllDishesViewModel
 import com.rrat.mvvm2demo.viewmodel.FavDishViewModel
@@ -64,6 +66,27 @@ class AllDishesFragment : Fragment() {
                         binding.tvNoDishesAddedYet.visibility = View.VISIBLE
                     }
                 }
+        }
+    }
+
+    fun dishDetails()
+    {
+        findNavController()
+            .navigate(
+                AllDishesFragmentDirections
+                .actionNavigationAllDishesToNavigationDishDetails()
+            )
+        if(requireActivity() is MainActivity)
+        {
+            (activity as MainActivity?)!!.hideBottomNavigationView()
+        }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        if(requireActivity() is MainActivity)
+        {
+            (activity as MainActivity?)!!.showBottomNavigationView()
         }
     }
 

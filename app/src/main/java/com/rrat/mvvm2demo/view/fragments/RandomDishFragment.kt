@@ -1,32 +1,65 @@
 package com.rrat.mvvm2demo.view.fragments
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import com.rrat.mvvm2demo.R
-import com.rrat.mvvm2demo.viewmodel.NotificationsViewModel
+import com.rrat.mvvm2demo.databinding.FragmentRandomDishBinding
+import com.rrat.mvvm2demo.viewmodel.RandomDishViewModel
 
 class RandomDishFragment : Fragment() {
 
-    private lateinit var notificationsViewModel: NotificationsViewModel
+    private var binding: FragmentRandomDishBinding? = null
+
+    private lateinit var  mRandomDishViewModel: RandomDishViewModel
 
     override fun onCreateView(
             inflater: LayoutInflater,
             container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View? {
-        notificationsViewModel =
-                ViewModelProvider(this).get(NotificationsViewModel::class.java)
-        val root = inflater.inflate(R.layout.fragment_random_dish, container, false)
-        val textView: TextView = root.findViewById(R.id.text_notifications)
-        notificationsViewModel.text.observe(viewLifecycleOwner, Observer {
-            textView.text = it
-        })
-        return root
+
+        binding = FragmentRandomDishBinding.inflate(inflater, container, false)
+
+        return binding!!.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        mRandomDishViewModel = ViewModelProvider(this).get(RandomDishViewModel::class.java)
+        mRandomDishViewModel.getRandomRecipeFromAPI()
+
+        randomViewModelObserver()
+    }
+
+    private fun randomViewModelObserver(){
+        mRandomDishViewModel.randomDishResponse.observe(viewLifecycleOwner,
+            {randomDishResponde -> randomDishResponde?.let {
+                Log.i("Randon Dish Response", "${randomDishResponde.recipes[0]}")
+            }}
+            )
+
+        mRandomDishViewModel.randomDishLoadingError.observe(viewLifecycleOwner,
+            {
+                dataError -> dataError?.let {
+                Log.i("Randon Dish API Error", "$dataError")
+
+            }
+            })
+
+        mRandomDishViewModel.loadRandomDish.observe(viewLifecycleOwner,
+            { loadRandomDish ->
+                Log.i("Randon Dish Loading", "$loadRandomDish")
+
+            }
+        )
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        binding = null
     }
 }
