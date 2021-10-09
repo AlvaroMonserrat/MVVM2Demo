@@ -31,5 +31,12 @@
         android:id="@+id/navigation_dish_details"
         android:name="com.rrat.mvvm2demo.view.fragments.DishDetailsFragment"
         android:label="Dish Details"
-        tools:layout="@layout/fragment_dish_details" />
+        tools:layout="@layout/fragment_dish_details">
+
+        <argument
+            android:name="dishDetails"
+            app:argType="com.rrat.mvvm2demo.model.entities.FavDish"
+            />
+
+    </fragment>
 </navigation>

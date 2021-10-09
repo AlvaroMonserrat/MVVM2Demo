@@ -3,7 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/AndroidStudioProjects/MVVM2Demo/app/src/main/res/layout/fragment_dish_details.xml" value="0.13020833333333334" />
+        <entry key="..\:/AndroidStudioProjects/MVVM2Demo/app/src/main/res/drawable/favorite_button_background.xml" value="0.14270833333333333" />
+        <entry key="..\:/AndroidStudioProjects/MVVM2Demo/app/src/main/res/drawable/ic_favorite_unselected.xml" value="0.14270833333333333" />
+        <entry key="..\:/AndroidStudioProjects/MVVM2Demo/app/src/main/res/layout/fragment_dish_details.xml" value="0.2" />
       </map>
     </option>
   </component>
