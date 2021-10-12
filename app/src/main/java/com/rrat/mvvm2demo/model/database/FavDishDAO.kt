@@ -21,4 +21,6 @@ interface FavDishDAO {
 
     @Query("SELECT * FROM FAV_DISHES_TABLE WHERE favorite_dish = 1")
     fun getFavoriteDishesList() : Flow<List<FavDish>>
+
+
 }
