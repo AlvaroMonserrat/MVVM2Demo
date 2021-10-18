@@ -63,4 +63,7 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="no_favorite_list_of_dishes">No Favorite List of Dishes</string>
+    <string name="button_pop_ups">button pop ups</string>
+    <string name="delete_dish">DELETE DISH</string>
+    <string name="edit_dish">EDIT DISH</string>
 </resources>
