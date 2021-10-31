@@ -1,5 +1,6 @@
 package com.rrat.mvvm2demo.view.adapters
 
+import android.content.Intent
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -11,6 +12,8 @@ import com.bumptech.glide.Glide
 import com.rrat.mvvm2demo.R
 import com.rrat.mvvm2demo.databinding.ItemDishLayoutBinding
 import com.rrat.mvvm2demo.model.entities.FavDish
+import com.rrat.mvvm2demo.utils.Constants
+import com.rrat.mvvm2demo.view.activites.AddUpdateDishActivity
 import com.rrat.mvvm2demo.view.fragments.AllDishesFragment
 import com.rrat.mvvm2demo.view.fragments.FavoriteDishesFragment
 
@@ -52,7 +55,9 @@ class FavDishAdapter(private val fragment: Fragment): RecyclerView.Adapter<FavDi
             popup.setOnMenuItemClickListener {
                 if(it.itemId == R.id.action_edit_dish)
                 {
-                    Log.i("MENU", "Edit ${dish.title}")
+                    val intent = Intent(fragment.requireActivity(), AddUpdateDishActivity::class.java)
+                    intent.putExtra(Constants.EXTRA_DISH_DETAILS, dish)
+                    fragment.requireActivity().startActivity(intent)
                 }
                 else if(it.itemId == R.id.action_delete_dish)
                 {

@@ -23,6 +23,7 @@ object Constants {
     const val TAGS_VALUE: String = "vegetarian, dessert"
     const val NUMBER_VALUE: Int = 1
 
+    const val EXTRA_DISH_DETAILS : String = "DishDetails"
 
     fun dishTypes(): ArrayList<String>{
         val list = ArrayList<String>()
