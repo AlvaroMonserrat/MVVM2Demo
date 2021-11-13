@@ -3,14 +3,17 @@ package com.rrat.mvvm2demo.view.adapters
 import android.app.Activity
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import com.rrat.mvvm2demo.databinding.ItemCustomListBinding
 import com.rrat.mvvm2demo.view.activites.AddUpdateDishActivity
+import com.rrat.mvvm2demo.view.fragments.AllDishesFragment
 
 class CustomListItemAdapter(
-        private val activity: Activity,
-        private val listItems: List<String>,
-        private val selection: String) : RecyclerView.Adapter<CustomListItemAdapter.ViewHolder>(){
+    private val activity: Activity,
+    private val fragment: Fragment?,
+    private val listItems: List<String>,
+    private val selection: String) : RecyclerView.Adapter<CustomListItemAdapter.ViewHolder>(){
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -28,6 +31,10 @@ class CustomListItemAdapter(
         holder.tvText.setOnClickListener{
             if(activity is AddUpdateDishActivity){
                 activity.selectedListItem(item, selection)
+            }
+            if(fragment is AllDishesFragment)
+            {
+                fragment.filterSelection(item)
             }
         }
 
