@@ -1,9 +1,6 @@
 package com.rrat.mvvm2demo.model.database
 
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.Query
-import androidx.room.Update
+import androidx.room.*
 import com.rrat.mvvm2demo.model.entities.FavDish
 import kotlinx.coroutines.flow.Flow
 
@@ -22,5 +19,7 @@ interface FavDishDAO {
     @Query("SELECT * FROM FAV_DISHES_TABLE WHERE favorite_dish = 1")
     fun getFavoriteDishesList() : Flow<List<FavDish>>
 
+    @Delete
+    suspend fun deleteFavDishDetails(favDish: FavDish)
 
 }
