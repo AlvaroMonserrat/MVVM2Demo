@@ -6,6 +6,7 @@
 
 <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
     tools:context=".view.fragments.RandomDishFragment"
+    android:id="@+id/srl_random_dish"
     android:layout_height="match_parent"
     android:layout_width="match_parent"
     xmlns:tools="http://schemas.android.com/tools"

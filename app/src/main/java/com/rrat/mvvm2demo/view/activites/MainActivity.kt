@@ -1,6 +1,7 @@
 package com.rrat.mvvm2demo.view.activites
 
 import android.os.Bundle
+import android.view.View
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
@@ -46,10 +47,13 @@ class MainActivity : AppCompatActivity() {
     {
         mBinding.navView.clearAnimation()
         mBinding.navView.animate().translationY(mBinding.navView.height.toFloat()).duration = 300
+        mBinding.navView.visibility = View.GONE
+
     }
     fun showBottomNavigationView()
     {
         mBinding.navView.clearAnimation()
         mBinding.navView.animate().translationY(0f).duration = 300
+        mBinding.navView.visibility = View.VISIBLE
     }
 }

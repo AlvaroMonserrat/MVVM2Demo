@@ -17,7 +17,7 @@ class RandomDishApiService {
 
     fun getRandomDish(): Single<RandomDish.Recipes>
     {
-        return api.getRandomDish(Constants.API_KEY,
+        return api.getRandomDish(Constants.API_KEY_VALUE,
             Constants.LIMIT_LICENSE_VALUE,
             Constants.TAGS_VALUE,
             Constants.NUMBER_VALUE)

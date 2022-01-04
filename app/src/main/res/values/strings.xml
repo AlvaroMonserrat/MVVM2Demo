@@ -66,4 +66,8 @@
     <string name="button_pop_ups">button pop ups</string>
     <string name="delete_dish">DELETE DISH</string>
     <string name="edit_dish">EDIT DISH</string>
+    <string name="msg_already_added_to_favorites">You have already added dish to your favorites.</string>
+    <string name="please_wait">Please Wait</string>
+    <string name="action_share_dish">Share Dish</string>
+
 </resources>
