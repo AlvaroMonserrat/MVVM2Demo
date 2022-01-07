@@ -10,8 +10,11 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import androidx.work.*
 import com.rrat.mvvm2demo.R
 import com.rrat.mvvm2demo.databinding.ActivityMainBinding
+import com.rrat.mvvm2demo.model.notification.NotifyWorker
+import java.util.concurrent.TimeUnit
 
 class MainActivity : AppCompatActivity() {
 
@@ -36,6 +39,8 @@ class MainActivity : AppCompatActivity() {
 
         setupActionBarWithNavController(mNavController, appBarConfiguration)
         navView.setupWithNavController(mNavController)
+
+        startWork() 
     }
 
 
@@ -55,5 +60,23 @@ class MainActivity : AppCompatActivity() {
         mBinding.navView.clearAnimation()
         mBinding.navView.animate().translationY(0f).duration = 300
         mBinding.navView.visibility = View.VISIBLE
+    }
+
+    private fun createConstrains() = Constraints.Builder()
+        .setRequiresCharging(false)
+        .setRequiredNetworkType(NetworkType.NOT_REQUIRED)
+        .setRequiresBatteryNotLow(true)
+        .build()
+
+    private fun createWorkRequest() =
+        PeriodicWorkRequestBuilder<NotifyWorker>(15, TimeUnit.MINUTES)
+            .setConstraints(createConstrains())
+            .build()
+
+    private fun startWork(){
+        WorkManager.getInstance(this)
+            .enqueueUniquePeriodicWork("Periodic Work Request",
+                ExistingPeriodicWorkPolicy.KEEP,
+                createWorkRequest())
     }
 }

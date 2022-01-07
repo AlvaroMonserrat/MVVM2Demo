@@ -85,4 +85,12 @@ dependencies {
     kapt "androidx.room:room-compiler:$room_version"
 
 
+    def work_version = "2.7.1"
+
+
+
+    // Kotlin + coroutines
+    implementation "androidx.work:work-runtime-ktx:$work_version"
+
+
 }
