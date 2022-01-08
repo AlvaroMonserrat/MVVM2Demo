@@ -14,6 +14,7 @@ import androidx.work.*
 import com.rrat.mvvm2demo.R
 import com.rrat.mvvm2demo.databinding.ActivityMainBinding
 import com.rrat.mvvm2demo.model.notification.NotifyWorker
+import com.rrat.mvvm2demo.utils.Constants
 import java.util.concurrent.TimeUnit
 
 class MainActivity : AppCompatActivity() {
@@ -40,7 +41,14 @@ class MainActivity : AppCompatActivity() {
         setupActionBarWithNavController(mNavController, appBarConfiguration)
         navView.setupWithNavController(mNavController)
 
-        startWork() 
+        if(intent.hasExtra(Constants.NOTIFICATION_ID))
+        {
+            val notificationId = intent.getIntExtra(Constants.NOTIFICATION_ID, 0)
+            mBinding.navView.selectedItemId = R.id.navigation_random_dish
+
+        }
+
+        startWork()
     }
 
 

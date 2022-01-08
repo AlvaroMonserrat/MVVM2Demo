@@ -1,5 +1,7 @@
 package com.rrat.mvvm2demo.utils
 
+import java.net.IDN
+
 object Constants {
 
     const val DISH_TYPE: String = "DishType"
@@ -26,6 +28,11 @@ object Constants {
     const val EXTRA_DISH_DETAILS : String = "DishDetails"
     const val ALL_ITEMS: String = "All"
     const val FILTER_SELECTION: String = "FilterSelection"
+
+    const val NOTIFICATION_NAME = "FavDish"
+    const val NOTIFICATION_ID = "FavDish_notification_id"
+    const val NOTIFICATION_CHANNEL = "FavDish_channel_01"
+
 
     fun dishTypes(): ArrayList<String>{
         val list = ArrayList<String>()
