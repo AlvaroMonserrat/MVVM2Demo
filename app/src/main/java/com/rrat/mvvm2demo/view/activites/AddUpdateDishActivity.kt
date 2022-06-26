@@ -41,7 +41,6 @@ import com.rrat.mvvm2demo.model.entities.FavDish
 import com.rrat.mvvm2demo.utils.Constants
 import com.rrat.mvvm2demo.view.adapters.CustomListItemAdapter
 import com.rrat.mvvm2demo.viewmodel.FavDishViewModel
-import com.rrat.mvvm2demo.viewmodel.FavDishViewModelFactory
 import java.io.File
 import java.io.FileOutputStream
 import java.io.IOException
@@ -59,9 +58,10 @@ class AddUpdateDishActivity : AppCompatActivity(), View.OnClickListener {
 
     private var mFavDishDetails: FavDish? = null
 
-    private val mFavDishViewModel : FavDishViewModel by viewModels{
-        FavDishViewModelFactory((application as FavDishApplication).repository)
-    }
+//    private val mFavDishViewModel : FavDishViewModel by viewModels{
+//        FavDishViewModelFactory((application as FavDishApplication).repository)
+//    }
+    private val mFavDishViewModel : FavDishViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

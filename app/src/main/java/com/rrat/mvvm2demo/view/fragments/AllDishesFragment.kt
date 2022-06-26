@@ -8,6 +8,7 @@ import android.util.Log
 import android.view.*
 import android.widget.GridLayout
 import android.widget.TextView
+import androidx.activity.viewModels
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
@@ -27,8 +28,9 @@ import com.rrat.mvvm2demo.view.adapters.CustomListItemAdapter
 import com.rrat.mvvm2demo.view.adapters.FavDishAdapter
 import com.rrat.mvvm2demo.viewmodel.AllDishesViewModel
 import com.rrat.mvvm2demo.viewmodel.FavDishViewModel
-import com.rrat.mvvm2demo.viewmodel.FavDishViewModelFactory
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class AllDishesFragment : Fragment() {
 
     private lateinit var binding : FragmentAllDishesBinding
@@ -37,9 +39,11 @@ class AllDishesFragment : Fragment() {
 
     private lateinit var mCustomListDialog: Dialog
 
-    private val mFavDishViewModel: FavDishViewModel by viewModels {
-        FavDishViewModelFactory((requireActivity().application as FavDishApplication).repository)
-    }
+//    private val mFavDishViewModel: FavDishViewModel by viewModels {
+//        FavDishViewModelFactory((requireActivity().application as FavDishApplication).repository)
+//    }
+
+    private val mFavDishViewModel : FavDishViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

@@ -15,8 +15,11 @@ import com.rrat.mvvm2demo.R
 import com.rrat.mvvm2demo.databinding.ActivityMainBinding
 import com.rrat.mvvm2demo.model.notification.NotifyWorker
 import com.rrat.mvvm2demo.utils.Constants
+import dagger.hilt.android.AndroidEntryPoint
 import java.util.concurrent.TimeUnit
 
+
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
     private lateinit var mBinding: ActivityMainBinding

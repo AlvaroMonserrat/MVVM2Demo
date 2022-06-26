@@ -8,6 +8,7 @@ import android.util.Log
 import android.view.*
 import androidx.fragment.app.Fragment
 import android.widget.Toast
+import androidx.activity.viewModels
 import androidx.core.content.ContextCompat
 import androidx.core.graphics.drawable.toBitmap
 import androidx.fragment.app.viewModels
@@ -24,20 +25,22 @@ import com.rrat.mvvm2demo.databinding.FragmentDishDetailsBinding
 import com.rrat.mvvm2demo.model.entities.FavDish
 import com.rrat.mvvm2demo.utils.Constants
 import com.rrat.mvvm2demo.viewmodel.FavDishViewModel
-import com.rrat.mvvm2demo.viewmodel.FavDishViewModelFactory
+import dagger.hilt.android.AndroidEntryPoint
 import java.io.IOException
 import java.util.*
 
+@AndroidEntryPoint
 class DishDetailsFragment : Fragment() {
 
     private var mFavDishDetails: FavDish? = null
 
     private lateinit var mBinding: FragmentDishDetailsBinding
 
-    private val mFavDishViewModel: FavDishViewModel by viewModels {
-        FavDishViewModelFactory(((requireActivity().application) as FavDishApplication).repository)
-
-    }
+//    private val mFavDishViewModel: FavDishViewModel by viewModels {
+//        FavDishViewModelFactory(((requireActivity().application) as FavDishApplication).repository)
+//
+//    }
+    private val mFavDishViewModel : FavDishViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
