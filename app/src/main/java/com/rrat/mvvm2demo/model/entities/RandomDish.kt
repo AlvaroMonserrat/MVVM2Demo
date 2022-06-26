@@ -1,9 +1,7 @@
 package com.rrat.mvvm2demo.model.entities
 
 object RandomDish {
-    data class Recipes(
-    val recipes: List<Recipe>
-)
+    data class Recipes(val recipes: List<Recipe>)
 
 data class Recipe(
     val aggregateLikes: Int,

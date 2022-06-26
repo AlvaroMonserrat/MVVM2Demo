@@ -21,14 +21,17 @@ import com.rrat.mvvm2demo.model.entities.FavDish
 import com.rrat.mvvm2demo.model.entities.RandomDish
 import com.rrat.mvvm2demo.utils.Constants
 import com.rrat.mvvm2demo.viewmodel.FavDishViewModel
-import com.rrat.mvvm2demo.viewmodel.FavDishViewModelFactory
+//import com.rrat.mvvm2demo.viewmodel.FavDishViewModelFactory
 import com.rrat.mvvm2demo.viewmodel.RandomDishViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+
+@AndroidEntryPoint
 class RandomDishFragment : Fragment() {
 
     private var binding: FragmentRandomDishBinding? = null
 
-    private lateinit var  mRandomDishViewModel: RandomDishViewModel
+            private lateinit var  mRandomDishViewModel: RandomDishViewModel
 
     private var mProgressDialog: Dialog? = null
 
@@ -69,7 +72,7 @@ class RandomDishFragment : Fragment() {
         randomViewModelObserver()
 
         binding!!.srlRandomDish.setOnRefreshListener {
-            mRandomDishViewModel.getRandomRecipeFromAPI()
+                mRandomDishViewModel.getRandomRecipeFromAPI()
         }
     }
 
@@ -189,9 +192,11 @@ class RandomDishFragment : Fragment() {
                     true
                 )
 
-                val mFavDishViewModel: FavDishViewModel by viewModels{
-                    FavDishViewModelFactory((requireActivity().application as FavDishApplication).repository)
-                }
+//                val mFavDishViewModel: FavDishViewModel by viewModels{
+//                    FavDishViewModelFactory((requireActivity().application as FavDishApplication).repository)
+//                }
+
+                val mFavDishViewModel: FavDishViewModel by viewModels()
 
                 mFavDishViewModel.insert(randomDishDetails)
 

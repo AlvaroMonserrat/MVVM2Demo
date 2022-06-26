@@ -23,21 +23,21 @@ class RandomDishViewModel : ViewModel(){
     {
        loadRandomDish.value = true
 
-        compositeDisposable.add(
+                compositeDisposable.add(
             randomRecipeApiService.getRandomDish()
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeWith(object: DisposableSingleObserver<RandomDish.Recipes>() {
-                    override fun onSuccess(value: RandomDish.Recipes?) {
+                    override fun onSuccess(value: RandomDish.Recipes) {
                         loadRandomDish.value = false
-                        randomDishResponse.value = value!!
+                        randomDishResponse.value = value
                         randomDishLoadingError.value = false
                     }
 
-                    override fun onError(e: Throwable?) {
+                    override fun onError(e: Throwable) {
                         loadRandomDish.value = false
                         randomDishLoadingError.value = true
-                        e!!.printStackTrace()
+                        e.printStackTrace()
                     }
 
                 })

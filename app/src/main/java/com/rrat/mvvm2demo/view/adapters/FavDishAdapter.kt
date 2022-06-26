@@ -56,7 +56,7 @@ class FavDishAdapter(private val fragment: Fragment): RecyclerView.Adapter<FavDi
                 if(it.itemId == R.id.action_edit_dish)
                 {
                     val intent = Intent(fragment.requireActivity(), AddUpdateDishActivity::class.java)
-                    intent.putExtra(Constants.EXTRA_DISH_DETAILS, dish)
+                        intent.putExtra(Constants.EXTRA_DISH_DETAILS, dish)
                     fragment.requireActivity().startActivity(intent)
                 }
                 else if(it.itemId == R.id.action_delete_dish)

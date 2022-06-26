@@ -20,17 +20,22 @@ import com.rrat.mvvm2demo.view.activites.MainActivity
 import com.rrat.mvvm2demo.view.adapters.FavDishAdapter
 import com.rrat.mvvm2demo.viewmodel.DashboardViewModel
 import com.rrat.mvvm2demo.viewmodel.FavDishViewModel
-import com.rrat.mvvm2demo.viewmodel.FavDishViewModelFactory
+//import com.rrat.mvvm2demo.viewmodel.FavDishViewModelFactory
+import dagger.hilt.android.AndroidEntryPoint
 
+
+@AndroidEntryPoint
 class FavoriteDishesFragment : Fragment() {
 
     private lateinit var binding : FragmentFavoriteDishesBinding
 
     private lateinit var dashboardViewModel: DashboardViewModel
 
-    private val mFavDishViewModel: FavDishViewModel by  viewModels {
-        FavDishViewModelFactory((requireActivity().application as FavDishApplication).repository)
-    }
+//    private val mFavDishViewModel: FavDishViewModel by  viewModels {
+//        FavDishViewModelFactory((requireActivity().application as FavDishApplication).repository)
+//    }
+
+    private val mFavDishViewModel : FavDishViewModel by viewModels()
 
     override fun onCreateView(
             inflater: LayoutInflater,
@@ -51,7 +56,7 @@ class FavoriteDishesFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.rvFavoriteList.layoutManager = GridLayoutManager(requireActivity(), 2)
+            binding.rvFavoriteList.layoutManager = GridLayoutManager(requireActivity(), 2)
         val favDishAdapter = FavDishAdapter(this@FavoriteDishesFragment)
 
         binding.rvFavoriteList.adapter = favDishAdapter
