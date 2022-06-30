@@ -6,6 +6,7 @@ La aplicación utiliza:
 - Base de datos local SQLite (Biblioteca Room)
 - Uso de Notificaciones cada 15min (Biblioteca WorkManager)
 - Comunicación con API https://api.spoonacular.com/ (Biblioteca Retrofit)
+- Dependency Injection usando Hilt
 
 ![image](https://user-images.githubusercontent.com/23504222/164560289-e75fc13f-96fa-4941-9b70-223ca1547503.png)
 ![image](https://user-images.githubusercontent.com/23504222/164560330-386f6ff9-72db-42c4-8fce-161af3bfd4c6.png)
